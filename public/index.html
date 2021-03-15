@@ -40,4 +40,23 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script>
+    var request = new XMLHttpRequest()
+
+  request.open('GET', 'http://witcher3api.test/api/characters/name/ja', true)
+  request.onload = function () {
+  // Begin accessing JSON data here
+  var data = JSON.parse(this.response)
+
+  if (request.status >= 200 && request.status < 400) {
+    data.forEach((characters) => {
+      console.log(characters.name)
+    })
+  } else {
+    console.log('error')
+  }
+}
+
+request.send()
+  </script>
 </html>
